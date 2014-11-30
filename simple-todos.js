@@ -45,10 +45,10 @@ if (Meteor.isClient) {
       // Set the checked property to the opposite of its current value
       Meteor.call("setChecked", this._id, ! this.checked);
     },
-    "click .delete": function () {
+    "click .btn-danger": function () {
       Meteor.call("deleteTask", this._id);
     },
-    "click .toggle-private": function () {
+    "click .btn-default": function () {
       Meteor.call("setPrivate", this._id, ! this.private);
     }
   });
@@ -75,6 +75,7 @@ Meteor.methods({
       text: text,
       createdAt: new Date(),
       owner: Meteor.userId(),
+      private: true,
       username: Meteor.user().username
     });
   },
